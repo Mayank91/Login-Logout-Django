@@ -1,4 +1,6 @@
 from django.http import HttpResponse,HttpResponseRedirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.shortcuts import render,render_to_response
 from django.views.generic.base import TemplateView
 from django.contrib import auth
@@ -30,9 +32,9 @@ def auth_view(request):
     user = auth.authenticate(username = username ,password = password)
     if user is not None :
         auth.login(request,user)
-        return HttpResponseRedirect('/loggedin')
+        return HttpResponseRedirect('/loggedin/')
     else:
-        return HttpResponseRedirect('/invalid')
+        return HttpResponseRedirect('invalid/')
 
 def invalid_login(request):
     return render_to_response('invalid_login.html')

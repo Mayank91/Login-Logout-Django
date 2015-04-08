@@ -3,10 +3,12 @@
     <p> Sorry worng pass user</p>
 {% endif %}
 
-<form action="/auth " method="POST">{% csrf_token %}
+<form action="/auth/" method="POST">{% csrf_token %}
     Name : <input type="text" name="username">
-    Password : <input type="password" name="passowrd">
+    Password : <input type="password" name="password">
     <input type="submit" value="login">
 
 </form>
+<h3>Not a registered yet ? </h3>
+<a href="/registration/">Regiter now</a>
 {% endblock %}

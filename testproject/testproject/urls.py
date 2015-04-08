@@ -16,7 +16,7 @@ urlpatterns = patterns('',
     url(r'^registration/$','testing.views.registration', name='reg'),
     url(r'^success/$','testing.views.success', name='success'),
     url(r'^form/$','testing.views.create', name='create'),
-    url(r'^ajax/$','testing.views.ajax', name='ajax'),
+    #url(r'^ajax/$','testing.views.ajax', name='ajax'),
 
 
     url(r'^admin/', include(admin.site.urls)),

@@ -1,5 +1,6 @@
 <h1>Registration </h1>
 <form action="/registration/" method="POST">{% csrf_token %}
-{{form}}
+{{form.as_p}}<br>
 <input type="submit">
 </form>
+<p>Registered User <a href="/login/">Login</a> </p>
