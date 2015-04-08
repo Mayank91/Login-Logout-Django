@@ -1,0 +1,12 @@
+{% block content %}
+{% if form.error %}
+    <p> Sorry worng pass user</p>
+{% endif %}
+
+<form action="/auth " method="POST">{% csrf_token %}
+    Name : <input type="text" name="username">
+    Password : <input type="password" name="passowrd">
+    <input type="submit" value="login">
+
+</form>
+{% endblock %}
