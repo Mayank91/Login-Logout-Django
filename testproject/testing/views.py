@@ -2,6 +2,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.shortcuts import render,render_to_response
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView
 from django.contrib import auth
 from django.core.context_processors import csrf
@@ -25,7 +26,7 @@ def login(request):
     c = {}
     c.update(csrf(request))
     return render_to_response('login.html', c)
-
+@csrf_exempt
 def auth_view(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
@@ -34,7 +35,7 @@ def auth_view(request):
         auth.login(request,user)
         return HttpResponseRedirect('/loggedin/')
     else:
-        return HttpResponseRedirect('invalid/')
+        return HttpResponseRedirect('/invalid_login/')
 
 def invalid_login(request):
     return render_to_response('invalid_login.html')
@@ -58,7 +59,7 @@ def registration(request):
     return render_to_response('registration.html',args)
 
 def success(request):
-    return HttpResponse('Working!!')
+    return HttpResponseRedirect('/login/')
 
 def create(request):
     if request.method == "POST":
